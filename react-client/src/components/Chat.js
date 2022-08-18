@@ -27,25 +27,12 @@ function Chat({ socket, username, roomId }) {
     
   useEffect(() => {
     const eventListener = (data) => {
-        setMessageList((list) => [...list, data]);
+      setMessageList((list) => [...list, data]);
     };
     socket.on("receive_message", eventListener);
 
     return () => socket.off("receive_message", eventListener);
   }, [socket]);
-    
-//   useEffect(() => {
-//     socket.on("receive_message", (data) => {
-//       setMessageList((list) => [...list, data]);
-//     });
-//   }, []);
-
-//   useEffect(() => {
-//     socket.on("receive_message", (data) => {
-//     //   setMessageList((list) => [...list, data]);
-//         console.log(data);
-//     });
-//   }, [socket]);
 
   return (
     <div className="chat-window">
